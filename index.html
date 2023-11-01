@@ -1,18 +1,111 @@
 <html>
-    <head>
-        <title>
-            Arvie's Webpage
-        </title>
-    </head>
-    <body>
-        <h1>Hello!</h1>
-        <p>
-            This is where my Assignment will be!  
-        </p>
-        <h2> Actual Thoughts </h2>
-        <p>
-            What might this be?
-        </p>
-        <a href="https://www.leagueoflegends.com/en-us/"> Here's a link to my addiction</a>
-    </body>
+	<script type = "text/javascript">
+
+		/***********************************************
+		* Display time of last visit script- by JavaScriptKit.com
+		* This notice MUST stay intact for use
+		* Visit JavaScript Kit at http://www.javascriptkit.com/ for this script and more
+		***********************************************/
+
+		var days = 730; // days until cookie expires = 2 years.
+		var lastvisit=new Object();
+		var firstvisitmsg="This is your first visit to this page. Welcome stranger!"; 
+		lastvisit.subsequentvisitmsg="Welcome back to Arvie's Website! Your last visit was on <b>[displaydate]</b>";
+
+		lastvisit.getCookie=function(Name){ 
+		var re=new RegExp(Name+"=[^;]+", "i"); 
+		if (document.cookie.match(re)) 
+		return document.cookie.match(re)[0].split("=")[1];
+		return''; 
+		}
+
+		lastvisit.setCookie=function(name, value, days){ 
+		var expireDate = new Date();
+
+		var expstring=expireDate.setDate(expireDate.getDate()+parseInt(days));
+		document.cookie = name+"="+value+"; expires="+expireDate.toGMTString()+"; path=/";
+		}
+
+		lastvisit.showmessage = function() {
+		var wh = new Date();
+		if (lastvisit.getCookie("visitc") == "") { 
+		lastvisit.setCookie("visitc", wh, days); 
+		document.write(firstvisitmsg);
+		}
+
+		else {
+		var lv = lastvisit.getCookie("visitc");
+		var lvp = Date.parse(lv);
+		var now = new Date();
+		now.setTime(lvp);
+		var day = new Array("Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat");
+		var month = new Array ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
+		var dd = now.getDate();
+		var dy = now.getDay();
+		dy = day[dy];
+		var mn = now.getMonth();
+		mn = month[mn];
+		yy = now.getFullYear();
+		var hh = now.getHours();
+		var ampm = "AM";
+		if (hh >= 12) {ampm = "PM"}
+		if (hh >12){hh = hh - 12};
+		if (hh == 0) {hh = 12}
+		if (hh < 10) {hh = "0" + hh};
+		var mins = now.getMinutes();
+		if (mins < 10) {mins = "0"+ mins}
+		var secs = now.getSeconds();
+		if (secs < 10) {secs = "0" + secs}
+		var dispDate = dy + ", " + mn + " " + dd + ", " + yy + " " + hh + ":" + mins + ":" + secs + " " + ampm
+		document.write(lastvisit.subsequentvisitmsg.replace("\[displaydate\]", dispDate))
+		}
+
+		lastvisit.setCookie("visitc", wh, days);
+
+		}
+
+		lastvisit.showmessage();
+
+	</script>
+	<head>
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-RHBF6JQSY9"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'G-RHBF6JQSY9');
+		</script>
+			
+		<title>Arvie's Website</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	</head>
+	<body>
+		<div class="card text-center">
+		  <div class="card-header">
+		    <ul class="nav nav-pills card-header-pills">
+		      <li class="nav-item">
+		        <a class="nav-link active" href="index.html">Home</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="about.html">About Me</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="axolotl_pictures.html">Axolotl Pictures</a>
+		      </li>
+		    </ul>
+		  </div>
+		</div>
+
+		<h1> Welcome to My Website! :) </h1> 
+		<p> Hello, </p>
+		<p>Nice to Meet you. </p>
+		<p>This is a website on Axolotls!</p>
+		<img src="https://c402277.ssl.cf1.rackcdn.com/photos/20852/images/magazine_medium/axolotl_WWsummer2021.jpg?1618758847" width="300px"> </br>
+		<a href="https://www.google.com/search?q=axolotl&sca_esv=578489342&hl=en&tbm=isch&sxsrf=AM9HkKnXz8lasq-c2qnB77gRN3NpAEjTVg:1698847268586&source=lnms&sa=X&ved=2ahUKEwjA1uKf-6KCAxUxIDQIHZxODPQQ_AUoAXoECAIQAw&biw=1440&bih=757&dpr=1"> Here's a Link to find more pictures of Axolotls!</a>
+
+		<p> Here's a Video on their Amazing Biology! </p>
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/bFkIG9S2Mmg?si=hIX1j2zhM74lROft" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+	</body>
 </html>
